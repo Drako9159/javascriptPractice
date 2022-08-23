@@ -9,6 +9,10 @@ const $itTask = document.querySelector("#itTask");
 const $form = document.querySelector("#form");
 const $taskName = document.querySelector("#time #taskName");
 
+renderTime();
+renderTasks();
+//Muestra cuenta regresevia inicial
+
 $form.addEventListener("submit", (e) => {
   e.preventDefault();
 
@@ -53,30 +57,57 @@ function renderTasks() {
   });
 }
 function startButtonHandler(id) {
-  time = 25 * 60;
+  time = 5;
   current = id;
   const taskIndex = tasks.findIndex((e) => e.id === id);
 
   $taskName.textContent = tasks[taskIndex].title;
-
+  renderTime();
   timer = setInterval(() => {
-    timeHandler(id);
+    timerHandler(id);
   }, 1000);
   //ejecuta una funcion de manera indefinida
   //Se ejecuta cada 1000 milisegundos
 }
-function timeHandler(id) {
+function timerHandler(id) {
   time--;
   renderTime();
+
   if (time === 0) {
     clearInterval(timer);
     //Detiene el set interval
-    current = null;
-    //cuelve a null
-    $taskName.textContent = "";
-    renderTime();
+    //current = null;
+    //vuelve a null
+    // $taskName.textContent = "";
+    markCompleted(id);
+    timer = null;
+    renderTasks();
+
+    startBreak();
+    //Periodo de descanso
   }
 }
+function startBreak() {
+  time = 3;
+  $taskName.textContent = "Break";
+  renderTime();
+  timerBreak = setInterval(() => {
+    timerBreakHandler();
+  }, 1000);
+}
+function timerBreakHandler() {
+  time--;
+  renderTime();
+
+  if (time === 0) {
+    clearInterval(timerBreak);
+    current = null;
+    timerBreak = null;
+    $taskName.textContent = "";
+    renderTasks();
+  }
+}
+
 function renderTime() {
   const $timeDive = document.querySelector("#time #value");
   const minutes = parseInt(time / 60);
@@ -86,4 +117,8 @@ function renderTime() {
     seconds < 10 ? "0" : ""
   } ${seconds}`;
   //Si minutos es menor que 10, coloca 0, y si no, coloca nada
+}
+function markCompleted(id) {
+  const taskIndex = tasks.findIndex((e) => e.id === id);
+  tasks[taskIndex].completed = true;
 }
