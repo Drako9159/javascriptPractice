@@ -1,0 +1,84 @@
+body{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: pink;
+}
+.form{
+    background-color: #ffffff;
+    padding: 20px;
+    width: 300px;
+    margin: 0 auto;
+}
+button{
+    border:none;
+    background-color: red;
+    padding: 5px;
+    color: #ffffff;
+    border-radius: 5px;
+}
+.form input{
+    margin: 5px 0;
+    padding: 5px;
+    display: block;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type ="button"]{
+    border: none;
+    background-color: #1860a8;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
+input[type ="submit"]{
+    border: none;
+    background-color: #1860a8;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+}
+#eventsContainer{
+    background-color: #ffffff;
+    border-radius: 5px;
+    padding: 10px;
+    width: 500px;
+    margin: 100px auto;
+    display: flex;
+    flex-direction: column;
+   
+    gap: 5px;
+}
+.task{
+    border: solid 1px #cccccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.event{
+    border: solid 1px #cccccc;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.event .days{
+    text-align: center;
+    width: 100px;
+}
+.event .days .days-number{
+    font-size: 30px;
+    font-weight: bold;
+    display: block;
+}
+.envet .event-name{
+    padding: 10px;
+    width: 200px;
+}
+.event .event-date{
+    padding: 10px;
+    width: 100px;
+}
+.event .actions{
+    padding: 10px;
+}
